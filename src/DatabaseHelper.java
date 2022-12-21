@@ -153,6 +153,34 @@ public class DatabaseHelper {
         }
     }
 
+    public void Add_Category(String Category_name)
+    {
+        try {
+            PreparedStatement stmt = con.prepareStatement("insert INTO Categories (Cat_name) VALUES (?)");
+            stmt.setString(1, Category_name);
+            stmt.executeUpdate();
+            con.commit();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void Remove_Category(String Category_name)
+    {
+        try {
+            PreparedStatement stmt = con.prepareStatement("DELETE FROM Categories WHERE Cat_name=?");
+            stmt.setString(1, Category_name);
+
+            stmt.executeUpdate();
+            con.commit();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
     public void Close_Connection()
     {
         try {
