@@ -1,3 +1,5 @@
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.*;
 
 public class DatabaseHelper {
@@ -172,6 +174,64 @@ public class DatabaseHelper {
         try {
             PreparedStatement stmt = con.prepareStatement("DELETE FROM Categories WHERE Cat_name=?");
             stmt.setString(1, Category_name);
+
+            stmt.executeUpdate();
+            con.commit();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void Add_product(String Product_name,int Owner_Id,float Price,int Stock,String P_imagePath,int Category_id)
+    {
+        try {
+            InputStream in = new FileInputStream(P_imagePath);
+    
+            PreparedStatement statement = con.prepareStatement("INSERT INTO Products (Prod_Name, Owner_Id, Price, Stock, P_Image, Category) VALUES (?,?,?,?,?,?);");
+            statement.setString(1, Product_name);
+            statement.setInt(2, Owner_Id);
+            statement.setFloat(3, (float) Price);
+            statement.setInt(4, Stock);
+            statement.setBlob(5, in);
+            statement.setInt(6, Category_id);
+            
+            statement.executeUpdate();
+            con.commit();
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void Edit_product(String Product_name,int Owner_Id,float Price,int Stock,String P_imagePath,int Category_id)
+    {
+        try {
+            InputStream in = new FileInputStream(P_imagePath);
+    
+            PreparedStatement statement = con.prepareStatement("UPDATE Products SET Prod_Name=?, Owner_Id=?, Price=?, Stock=?, P_Image=?, Category=?");
+            statement.setString(1, Product_name);
+            statement.setInt(2, Owner_Id);
+            statement.setFloat(3, (float) Price);
+            statement.setInt(4, Stock);
+            statement.setBlob(5, in);
+            statement.setInt(6, Category_id);
+            
+            statement.executeUpdate();
+            con.commit();
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void Remove_Product(int P_id)
+    {
+        try {
+            PreparedStatement stmt = con.prepareStatement("DELETE FROM Products WHERE P_Id=?");
+            stmt.setInt(1, P_id);
 
             stmt.executeUpdate();
             con.commit();
