@@ -64,4 +64,21 @@ public class Admin {
 
         db.Close_Connection();
     }
+
+    public void Add_Category(String Category_name)
+    {
+        db.ConnectDB();
+
+        db.Add_Category(Category_name);
+
+        db.Close_Connection();
+    }
+
+    public void Remove_Category(String Category_name)
+    {
+        db.ConnectDB();
+        db.Remove_Category(Category_name);
+        db.Close_Connection();
+    }
+
 }
