@@ -27,7 +27,7 @@ public class DatabaseHelper {
     {
         try {
             PreparedStatement stmt = con.prepareStatement("SELECT * from ?");
-            stmt.setString(0, Table);
+            stmt.setString(1, Table);
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
@@ -45,7 +45,7 @@ public class DatabaseHelper {
         int OwnerID = -1;
         try {
             PreparedStatement stmt = con.prepareStatement("SELECT ID from users where Username=?");
-            stmt.setString(0, Shoponwer);
+            stmt.setString(1, Shoponwer);
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next())
@@ -66,7 +66,7 @@ public class DatabaseHelper {
         int[] product_ids ;
         try {
             PreparedStatement stmt = con.prepareStatement("SELECT P_Id from Products where Owner_Id=?");
-            stmt.setInt(0, owner_id);
+            stmt.setInt(1, owner_id);
 
             ResultSet rs = stmt.executeQuery();
             
@@ -97,7 +97,7 @@ public class DatabaseHelper {
             PreparedStatement stmt = con.prepareStatement("SELECT * from Transactions where P_Id=?");
             for (int i = 0; i < products_ids.length; i++) {
                 
-                stmt.setInt(0, products_ids[i]);
+                stmt.setInt(1, products_ids[i]);
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()){
@@ -111,6 +111,47 @@ public class DatabaseHelper {
         }
     }
 
+    public ResultSet Get_PendingShops()
+    {
+        ResultSet result = null;
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM ShopOwners WHERE is_accepted=FALSE");
+            result = stmt.executeQuery();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return result;
+    }
+   
+    public void Add_ShopOwner(int owner_id)
+    {
+        try {
+            PreparedStatement stmt = con.prepareStatement("UPDATE ShopOwners SET is_accepted=TRUE WHERE ID=?");
+            stmt.setInt(1, owner_id);
+            stmt.executeUpdate();
+            con.commit();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void Remove_ShopOwner(int owner_id)
+    {
+        try {
+            PreparedStatement stmt = con.prepareStatement("DELETE FROM ShopOwners WHERE Id=?");
+            stmt.setInt(1, owner_id);
+
+            stmt.executeUpdate();
+            con.commit();
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
 
     public void Close_Connection()
     {
