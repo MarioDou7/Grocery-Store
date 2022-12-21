@@ -1,7 +1,7 @@
 public class Admin {
     
     private static Admin Instance = null;
-
+    private DatabaseHelper db =new DatabaseHelper();
     
     private Admin(){}
 
@@ -14,7 +14,6 @@ public class Admin {
 
     public void Check_Order_History(String owner)
     {
-        DatabaseHelper db = new DatabaseHelper();
         db.ConnectDB();
         //owner_id = select ID from user where Username=owner
         int owner_id = db.Select_ID_Username(owner);
@@ -41,7 +40,6 @@ public class Admin {
 
     public void View_Transcation()
     {
-        DatabaseHelper db = new DatabaseHelper();
         db.ConnectDB();
 
         db.View_all_Table("Transactions");
@@ -49,5 +47,21 @@ public class Admin {
         db.Close_Connection();
     }
 
-    
+    public void Accept_ShopOwner(int shopOwner_id)
+    {
+        db.ConnectDB();
+
+        db.Add_ShopOwner(shopOwner_id);
+
+        db.Close_Connection();
+    }
+
+    public void Remove_ShopOwner(int shopOwner_id)
+    {
+        db.ConnectDB();
+
+        db.Remove_ShopOwner(shopOwner_id);
+
+        db.Close_Connection();
+    }
 }
