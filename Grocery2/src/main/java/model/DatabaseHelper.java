@@ -13,7 +13,7 @@ public class DatabaseHelper {
 
     public DatabaseHelper(){}
 
-    public void ConnectDB()
+    public void ConnectDB() //create a connection to database
     {
         try {
             con = DriverManager.getConnection(MySQLURL, databseUserName, databasePassword);
@@ -27,7 +27,7 @@ public class DatabaseHelper {
         }
     }
 
-    public void View_all_Table(String Table)
+    public void View_all_Table(String Table)    //view all columns of any table
     {
         try {
             PreparedStatement stmt = con.prepareStatement("SELECT * from ?");
@@ -44,7 +44,7 @@ public class DatabaseHelper {
 
     }
 
-    public int Select_ID_Username(String Shoponwer)
+    public int Select_ID_Username(String Shoponwer)  //retrieve the userID from user tables
     {
         int OwnerID = -1;
         try {
@@ -65,7 +65,7 @@ public class DatabaseHelper {
 
     }
 
-    public int[] Select_ProdID_ownerid(int owner_id)
+    public int[] Select_ProdID_ownerid(int owner_id) //retireve the products ids from the products table that belongs to this owner id
     {
         int[] product_ids ;
         try {
@@ -95,7 +95,7 @@ public class DatabaseHelper {
 
     }
 
-    public void filter_Transaction_ProdID(int[] products_ids)
+    public void filter_Transaction_ProdID(int[] products_ids) //filter the transaction table with the products ids
     {
         try {
             PreparedStatement stmt = con.prepareStatement("SELECT * from Transactions where P_Id=?");
@@ -115,7 +115,7 @@ public class DatabaseHelper {
         }
     }
 
-    public ResultSet Get_PendingShops()
+    public ResultSet Get_PendingShops() //retrives the shops thats admin didn't accept
     {
         ResultSet result = null;
         try {
