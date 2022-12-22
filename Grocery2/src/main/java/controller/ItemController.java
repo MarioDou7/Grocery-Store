@@ -33,6 +33,7 @@ public class ItemController {
         this.myListener=myListener;
         nameLabel.setText(item.getName());
         priceLabel.setText("EGP" + item.getPrice());
-        Image image = new Image(this.getClass().getResourceAsStream(item.getImgSrc()));        img.setImage(image);
+        Image image = new Image(this.getClass().getResourceAsStream(item.getImgSrc()));
+        img.setImage(image);
     }
 }
