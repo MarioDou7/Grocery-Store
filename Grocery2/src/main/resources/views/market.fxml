@@ -73,13 +73,13 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Button id="minus" mnemonicParsing="false" text="-" onMousePressed="#decease" />
+                              <Button id="minus" mnemonicParsing="false" onMousePressed="#decrease" text="-" />
                               <Label id="amount" text="0">
                                  <padding>
                                     <Insets left="15.0" right="15.0" top="5.0" />
                                  </padding>
                               </Label>
-                              <Button id="plus" mnemonicParsing="false" text="+" onMousePressed="#increase"/>
+                              <Button id="plus" mnemonicParsing="false" onMousePressed="#increase" text="+" />
                            </children>
                         </HBox>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="181.0" styleClass="add-btn" stylesheets="@../../java/values/styles.css" text="Add to cart" textAlignment="CENTER">
@@ -115,7 +115,7 @@
                         </Label>
                         <Pane prefHeight="42.0" prefWidth="151.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="8.0" layoutY="1.0" prefHeight="43.0" prefWidth="79.0" text="My Account" textAlignment="CENTER" underline="true">
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="8.0" layoutY="1.0" onMousePressed="#account" prefHeight="43.0" prefWidth="79.0" text="My Account" textAlignment="CENTER" underline="true">
                                  <font>
                                     <Font name="Calibri" size="15.0" />
                                  </font>
@@ -135,17 +135,17 @@
                   <HBox alignment="CENTER" prefHeight="400.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
                      <children>
                         <ScrollPane fx:id="scroll" prefHeight="1000.0" prefWidth="1000.0">
-                          <content>
-                            <AnchorPane fx:id="anchor" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0">
+                           <content>
+                              <AnchorPane fx:id="anchor" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0">
                                  <children>
                                     <GridPane fx:id="grid" layoutX="-1.0" layoutY="-1.0" prefHeight="522.0" prefWidth="789.0" stylesheets="@../../java/values/styles.css">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
                                     </GridPane>
                                  </children>
                               </AnchorPane>
-                          </content>
+                           </content>
                         </ScrollPane>
                      </children>
                      <VBox.margin>
