@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -33,16 +34,19 @@ public class MarketController implements Initializable {
     private Label ItemPriceLabel;
 
     @FXML
+    private Label amount;
+
+    @FXML
     private AnchorPane anchor;
 
     @FXML
     private VBox chosenCard;
 
     @FXML
-    private ScrollPane scroll;
+    private GridPane grid;
 
     @FXML
-    private GridPane grid;
+    private ScrollPane scroll;
 
     public MarketController() {
     }
@@ -136,4 +140,22 @@ public class MarketController implements Initializable {
         }
 
     }
+
+    public void increase()
+    {
+        int current_amount = Integer.valueOf(amount.getText());
+
+        //if current_amount = Product.quantity? return;
+        this.amount.setText(String.valueOf(current_amount+1));
+    }
+
+    public void decrease()
+    {
+        int current_amount = Integer.valueOf(amount.getText());
+
+        //if current_amount = Product.quantity? return;
+        this.amount.setText(String.valueOf(current_amount-1));
+    }
+
+
 }
