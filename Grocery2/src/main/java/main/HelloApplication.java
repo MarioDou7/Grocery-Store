@@ -8,13 +8,14 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import javafx.scene.Parent;
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        URL url = new File("D:\\ASU FCIS 2023\\Year 4\\Semester 1\\3. Software Design Patterns\\Project\\GUI\\Grocery2\\src\\main\\resources\\views\\market.fxml").toURI().toURL();
+        URL url = new File("D:\\computer science\\fouth year\\First Term\\SW Design Patterns\\Grocery Store\\Grocery2\\src\\main\\resources\\views\\market.fxml").toURI().toURL();
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene((Parent) fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
     }
