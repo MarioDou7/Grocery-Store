@@ -123,7 +123,7 @@
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <ImageView fitHeight="33.0" fitWidth="56.0" layoutX="88.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="33.0" fitWidth="56.0" layoutX="88.0" layoutY="6.0" onMousePressed="#shoppingcart" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/ic_cart.png" />
                                  </image>
