@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.MyListener;
 import model.Item;
 
@@ -157,5 +159,13 @@ public class MarketController implements Initializable {
         this.amount.setText(String.valueOf(current_amount-1));
     }
 
+    public void account() throws IOException {
+        FXMLLoader fxmlLoaderlogin = new FXMLLoader();
+        fxmlLoaderlogin.setLocation(this.getClass().getResource("/views/login.fxml"));
+        Scene scene = new Scene(fxmlLoaderlogin.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
