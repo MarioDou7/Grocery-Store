@@ -168,4 +168,13 @@ public class MarketController implements Initializable {
         stage.show();
     }
 
+    public void shoppingcart() throws IOException {
+        FXMLLoader fxmlLoadercart = new FXMLLoader();
+        fxmlLoadercart.setLocation(this.getClass().getResource("/views/ShoppingCart.fxml"));
+        Scene scene = new Scene(fxmlLoadercart.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
