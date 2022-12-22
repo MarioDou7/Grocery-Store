@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+        <AnchorPane prefHeight="400.0" prefWidth="374.0" BorderPane.alignment="CENTER">
+            <children>
+            <ImageView fitHeight="594.0" fitWidth="703.0" layoutX="-103.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@BackgroundImg.jpg" />
+               </image>
+            </ImageView>
+                <TextField fx:id="Name" layoutX="57.0" layoutY="111.0" prefHeight="25.0" prefWidth="202.0" promptText=" Name" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+                <TextField fx:id="shopName" layoutX="57.0" layoutY="157.0" prefHeight="25.0" prefWidth="202.0" promptText="Shop Name " style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+                <PasswordField fx:id="password" layoutX="57.0" layoutY="203.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+                <PasswordField fx:id="confirmPassword" layoutX="57.0" layoutY="246.0" prefHeight="25.0" prefWidth="202.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="registerButton" layoutX="106.0" layoutY="311.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="76.0" style="-fx-background-color: #547c5b; -fx-background-radius: 5px;" text="Submit" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fill="#ebeef2" layoutX="38.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#ebeef2" layoutX="106.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Login" underline="true" wrappingWidth="49.09453201293945">
+               <font>
+                  <Font name="Wingdings 3" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#ebeef2" layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shop Owner Registeration" textAlignment="CENTER" wrappingWidth="363.8487014770508">
+               <font>
+                  <Font name="Wingdings 3" size="27.0" />
+               </font>
+            </Text>
+            </children>
+        </AnchorPane>
+   </top>
+</BorderPane>
