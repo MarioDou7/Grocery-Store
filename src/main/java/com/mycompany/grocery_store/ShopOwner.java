@@ -1,9 +1,7 @@
 package com.mycompany.grocery_store;
 
-/**
- *
- * @author Luka
- */
+/**@author Luka **/
+
 public class ShopOwner {
     
 }
