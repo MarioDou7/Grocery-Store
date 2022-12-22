@@ -1,22 +1,27 @@
 package model;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.awt.image.BufferedImage;
-
 public abstract class GroceryProduct {
     private String Name;
     private double Price;
     private int Stock;
     private int Quantity;
-    private BufferedImage Image;
+    private String Path_Image;
+    private String Category;
 
-    public GroceryProduct(String Name, double Price, int Stock, int Quantity, BufferedImage Image){
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public GroceryProduct(String Name, double Price, int Stock, int Quantity,  String Path_Image){
         this.Name = Name;
         this.Price = Price;
         this.Stock = Stock;
         this.Quantity = Quantity;
-        this.Image = Image;
+        this.Path_Image = Path_Image;
     }
 
     public String getName() {
@@ -31,8 +36,8 @@ public abstract class GroceryProduct {
     public int getQuantity() {
         return Quantity;
     }
-    public BufferedImage getImage() {
-        return Image;
+    public String getImage() {
+        return Path_Image;
     }
 
     public void setName(String Name) {
@@ -47,8 +52,8 @@ public abstract class GroceryProduct {
     public void setQuantity(int Quantity) {
         this.Quantity = Quantity;
     }
-    public void setImage(BufferedImage Image) {
-        this.Image = Image;
+    public void setImage(String Image) {
+        this.Path_Image = Image;
     }
 
     public double calcBill(){

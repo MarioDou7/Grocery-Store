@@ -207,18 +207,17 @@ public class DatabaseHelper {
         }
     }
 
-    public void Edit_product(String Product_name,int Owner_Id,float Price,int Stock,String P_imagePath,int Category_id)
+    public void Edit_product(String Product_name,float Price,int Stock,String P_imagePath,int Category_id)
     {
         try {
             InputStream in = new FileInputStream(P_imagePath);
 
-            PreparedStatement statement = con.prepareStatement("UPDATE Products SET Prod_Name=?, Owner_Id=?, Price=?, Stock=?, P_Image=?, Category=?");
+            PreparedStatement statement = con.prepareStatement("UPDATE Products SET Prod_Name=?, Price=?, Stock=?, P_Image=?, Category=?");
             statement.setString(1, Product_name);
-            statement.setInt(2, Owner_Id);
-            statement.setFloat(3, (float) Price);
-            statement.setInt(4, Stock);
-            statement.setBlob(5, in);
-            statement.setInt(6, Category_id);
+            statement.setFloat(2, (float) Price);
+            statement.setInt(3, Stock);
+            statement.setBlob(4, in);
+            statement.setInt(5, Category_id);
 
             statement.executeUpdate();
             con.commit();
