@@ -281,9 +281,7 @@ public class ProductController {
             conn = DatabaseController.getConnection();
 
             String editProductQuery =
-                    "UPDATE Products " +
-                    "SET Prod_Name = ?, Price = ?, Stock = ?" +
-                    "WHERE P_Id = ?";
+                    "UPDATE Products SET Prod_Name = ?, Price = ?, Stock = ? WHERE P_Id = ? ";
 
             ps = conn.prepareStatement(editProductQuery);
             ps.setString(1, nameTextField.getText());
