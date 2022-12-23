@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -36,7 +37,7 @@
                   <Insets bottom="5.0" />
                </padding>
             </Label>
-            <Button fx:id="purchaseButton" mnemonicParsing="false" onAction="#Add_to_cart" prefWidth="90.0" text="Add To Cart" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Button fx:id="purchaseButton" mnemonicParsing="false" prefWidth="90.0" text="Add To Cart" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <ListView fx:id="productListView" onMouseClicked="#updateDetails" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Product Details" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                <font>
@@ -93,6 +94,11 @@
                   <Insets left="90.0" right="20.0" top="-10.0" />
                </GridPane.margin>
             </TextField>
+            <ImageView fx:id="productImage" fitHeight="99.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="100.0" top="140.0" />
+               </GridPane.margin>
+            </ImageView>
          </children>
       </GridPane>
    </children>
