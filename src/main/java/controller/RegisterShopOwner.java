@@ -15,4 +15,12 @@ public class RegisterShopOwner {
             stage.setScene(scene);
             stage.show();
         }
+    public void login() throws IOException {
+        FXMLLoader fxmlLoaderlogin = new FXMLLoader();
+        fxmlLoaderlogin.setLocation(this.getClass().getResource("/views/login-view.fxml"));
+        Scene scene = new Scene(fxmlLoaderlogin.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 }
