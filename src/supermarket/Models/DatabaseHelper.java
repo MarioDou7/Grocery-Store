@@ -262,6 +262,38 @@ public class DatabaseHelper {
         }
     }
 
+    public void insert_Transaction(int P_Id,int U_Id,int Quantity)
+    {
+        try {
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO Transactions (P_Id, U_Id, Quantity, Is_Pending, Trans_Date) " +
+                    "VALUES (?, ?, ?, CURRENT_TIMESTAMP(0));");
+            stmt.setInt(1,P_Id);
+            stmt.setInt(2,U_Id);
+            stmt.setInt(3,Quantity);
+            stmt.executeUpdate();
+            con.commit();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update_product_stock(int P_Id, int total_stock,int taken_quantity)
+    {
+        String updateProductQuery =             //update product quantity stock
+                "UPDATE Products SET Stock = ? WHERE P_Id = ?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(updateProductQuery);
+            stmt.setInt(1, total_stock - taken_quantity);
+            stmt.setInt(2, P_Id);
+            stmt.executeUpdate();
+        }catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+    }
     public void Close_Connection()
     {
         try {

@@ -4,7 +4,6 @@ public abstract class GroceryProduct {
     private String Name;
     private double Price;
     private int Stock;
-    private int Quantity;
     private String Path_Image;
     private String Category;
 
@@ -16,11 +15,10 @@ public abstract class GroceryProduct {
         Category = category;
     }
 
-    public GroceryProduct(String Name, double Price, int Stock, int Quantity,  String Path_Image){
+    public GroceryProduct(String Name, double Price, int Stock,  String Path_Image){
         this.Name = Name;
         this.Price = Price;
         this.Stock = Stock;
-        this.Quantity = Quantity;
         this.Path_Image = Path_Image;
     }
 
@@ -32,9 +30,6 @@ public abstract class GroceryProduct {
     }
     public int getStock() {
         return Stock;
-    }
-    public int getQuantity() {
-        return Quantity;
     }
     public String getImage() {
         return Path_Image;
@@ -48,9 +43,6 @@ public abstract class GroceryProduct {
     }
     public void setStock(int Stock) {
         this.Stock = Stock;
-    }
-    public void setQuantity(int Quantity) {
-        this.Quantity = Quantity;
     }
     public void setImage(String Image) {
         this.Path_Image = Image;

@@ -10,6 +10,8 @@ public class Customer {
     private int CreditCard;
     private static Customer userInstance = null;
 
+    private DatabaseHelper db = new DatabaseHelper();
+
     // =========================== Constructors ===========================
     public Customer(int Id, String Name, String Country, String Address, String Phone, int CreditCard){
         this.Id = Id;
@@ -70,15 +72,31 @@ public class Customer {
     }
 
     // =========================== Customer Functionality ===========================
-    public void purchase(GroceryProduct Item, int Quantity){
-        // Add to Cart Code
-    }
-    public void cancelPurchase(GroceryProduct Item){
-        // Remove from Cart Code
+    public void purchase(int P_Id,int U_Id,int Quantity,int stock){
+        // Add to transaction
+        db.ConnectDB();
+
+        db.insert_Transaction(P_Id,U_Id,Quantity);
+
+        db.update_product_stock(P_Id,stock,Quantity);
+
+        db.Close_Connection();
+
     }
     public void editPurchase(GroceryProduct Item){
         // Edit Products Inside the Cart Code
     }
+
+    public void Add_to_cart()
+    {
+
+    }
+
+    public void remove_from_cart()
+    {
+
+    }
+
 
     // =========================== Display User Info ===========================
     public void displayInfo(){

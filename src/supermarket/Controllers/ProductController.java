@@ -25,15 +25,37 @@ public class ProductController {
     private static ResultSet rs = null;
     private static Product[] products = new Product[50];
 
-    @FXML ListView<String> productListView;
-    @FXML TextField nameTextField;
-    @FXML TextField priceTextField;
-    @FXML TextField stockTextField;
-    @FXML Button purchaseButton;
-    @FXML Button newProductButton;
-    @FXML Button deleteButton;
-    @FXML Button saveButton;
-    @FXML Label errorLabel;
+
+
+        @FXML
+        private TextField QuantityTextField;
+
+        @FXML
+        private Button deleteButton;
+
+        @FXML
+        private Label errorLabel;
+
+        @FXML
+        private TextField nameTextField;
+
+        @FXML
+        private Button newProductButton;
+
+        @FXML
+        private TextField priceTextField;
+
+        @FXML
+        private ListView<?> productListView;
+
+        @FXML
+        private Button purchaseButton;
+
+        @FXML
+        private Button saveButton;
+
+        @FXML
+        private TextField stockTextField;
 
     @FXML
     private void goToProducts(javafx.event.ActionEvent event) {
@@ -51,11 +73,13 @@ public class ProductController {
         nameTextField.setText("");
         priceTextField.setText("");
         stockTextField.setText("");
+        QuantityTextField.setText("");
 
         if (Customer.getUserInstance().getName().equals("Admin")) {
             nameTextField.setEditable(true);
             priceTextField.setEditable(true);
             stockTextField.setEditable(true);
+            QuantityTextField.setEditable(true);
 
             newProductButton.setVisible(true);
             deleteButton.setVisible(true);
@@ -129,7 +153,7 @@ public class ProductController {
     @FXML
     private void purchase() {
         errorLabel.setText("");
-        int index = productListView.getSelectionModel().getSelectedIndex();
+        int index = productListView.getSelectionModel().getSelectedIndex();  //get index of the pressed item
         if (index == -1) {
             errorLabel.setText("Select a product first.");
         } else {
@@ -139,28 +163,18 @@ public class ProductController {
                 SimpleFormatter formatter = new SimpleFormatter();
                 fh.setFormatter(formatter);
 
-                conn = DatabaseController.getConnection();
+                conn = DatabaseController.getConnection();          //database connection
 
-                int productStock = products[index].getStock();
+                int productStock = products[index].getStock();      //
                 if (productStock < 1) {
                     errorLabel.setText("The product you want to buy has run out.");
                 } else {
-                    String purchaseQuery =
-                            "INSERT INTO Transactions (P_Id, U_Id, Quantity, Is_Pending, Trans_Date) " +
-                            "VALUES (?, ?, ?, ? , CURRENT_TIMESTAMP(0))";
-                    ps = conn.prepareStatement(purchaseQuery);
-                    ps.setInt(1, products[index].getId());
-                    ps.setInt(2, Customer.getUserInstance().getId());
-                    ps.setInt(3, 1);
-                    ps.setBoolean(4, false);
-                    ps.executeUpdate();
+                    int U_Id = Customer.getUserInstance().getId();
+                    int P_Id = products[index].getId();
+                    Customer.getUserInstance().purchase(P_Id,U_Id,QuantityTextField.getText(),products[index].getStock());
 
-                    String updateProductQuery =
-                            "UPDATE Products SET Stock = ? WHERE P_Id = ?";
-                    ps = conn.prepareStatement(updateProductQuery);
-                    ps.setInt(1, productStock - 1);
-                    ps.setInt(2, products[index].getId());
-                    ps.executeUpdate();
+                    products[index].setStock(products[index].getStock() - QuantityTextField.getText());
+
 
                     logger.log(Level.INFO,
                             "User " + Customer.getUserInstance().getName() +
@@ -171,7 +185,7 @@ public class ProductController {
                     priceTextField.setText("");
                     stockTextField.setText("");
 
-                    loadProducts();
+                    loadProducts();                     //load products again (refresh)
                 }
             } catch (SQLException e) {
                 logger.log(Level.SEVERE, e.getMessage());
@@ -186,6 +200,11 @@ public class ProductController {
                 fh.close();
             }
         }
+    }
+
+    private void Add_to_cart()
+    {
+
     }
 
     @FXML
