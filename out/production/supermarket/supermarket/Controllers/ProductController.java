@@ -247,7 +247,7 @@ public class ProductController {
 
             String deleteProductQuery =
                     "DELETE FROM Products " +
-                    "WHERE Id = ?";
+                    "WHERE P_Id = ?";
 
             ps = conn.prepareStatement(deleteProductQuery);
             ps.setInt(1, products[index].getId());
