@@ -294,6 +294,52 @@ public class DatabaseHelper {
         }
 
     }
+
+    public void add_Cart(int P_ID,int U_Id,int Quantity_Selected)
+    {
+        try{
+            PreparedStatement statement = con.prepareStatement("insert into cart (P_Id,U_Id,Quantity) values(?,?,?);");
+            statement.setInt(1,P_ID);
+            statement.setInt(2,U_Id);
+            statement.setInt(3,Quantity_Selected);
+            statement.executeUpdate();
+            con.commit();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void Update_Cart(int P_ID,int U_Id,int Quantity_Changed)
+    {
+
+        try {
+            PreparedStatement stmt = con.prepareStatement("UPDATE Cart SET Quantity = ? WHERE P_ID = ? and U_Id = ? ");
+            stmt.setInt(1,Quantity_Changed);
+            stmt.setInt(2,P_ID);
+            stmt.setInt(3,U_Id);
+            stmt.executeUpdate();
+            con.commit();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public void Remove_from_Cart(int U_ID, int P_ID)
+    {
+        try
+        {
+            PreparedStatement statement = con.prepareStatement("Delete From Cart where U_ID = ? and P_ID = ?");
+            statement.setInt(1,U_ID);
+            statement.setInt(2,P_ID);
+            statement.executeUpdate();
+            con.commit();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void Close_Connection()
     {
         try {

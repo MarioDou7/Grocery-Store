@@ -1,5 +1,6 @@
 package supermarket.Controllers;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -204,7 +205,158 @@ public class ProductController {
 
     private void Add_to_cart()
     {
+        errorLabel.setText("");
+        int index = productListView.getSelectionModel().getSelectedIndex();  //get index of the pressed item
+        if (index == -1) {
+            errorLabel.setText("Select a product first.");
+        } else {
+            try {
+                fh = new FileHandler("logfile.log", true);
+                logger.addHandler(fh);
+                SimpleFormatter formatter = new SimpleFormatter();
+                fh.setFormatter(formatter);
 
+                conn = DatabaseController.getConnection();          //database connection
+
+                int productStock = products[index].getStock();      //
+                if (productStock < 1) {
+                    errorLabel.setText("The product you want to buy has run out.");
+                } else {
+                    int P_id = products[index].getId();
+                    int U_id = Customer.getUserInstance().getId();
+                    Customer.getUserInstance().Add_to_cart(P_id,U_id,Integer.valueOf(QuantityTextField.getText()));
+
+                    logger.log(Level.INFO,
+                            "User " + Customer.getUserInstance().getName() +
+                                    " with id " + Customer.getUserInstance().getId() +
+                                    " bought a product");
+
+                    nameTextField.setText("");
+                    priceTextField.setText("");
+                    stockTextField.setText("");
+
+                    loadProducts();                     //load products again (refresh)
+
+                }
+
+            } catch (SQLException e) {
+                logger.log(Level.SEVERE, e.getMessage());
+                errorLabel.setText("Purchase Product Database failure.");
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+                errorLabel.setText("Something went wrong.");
+            } finally {
+                DbUtils.closeQuietly(rs);
+                DbUtils.closeQuietly(ps);
+                DbUtils.closeQuietly(conn);
+                fh.close();
+            }
+        }
+    }
+
+
+
+    private void Edit_cart()
+    {
+        errorLabel.setText("");
+        int index = productListView.getSelectionModel().getSelectedIndex();  //get index of the pressed item
+        if (index == -1) {
+            errorLabel.setText("Select a product first.");
+        } else {
+            try {
+                fh = new FileHandler("logfile.log", true);
+                logger.addHandler(fh);
+                SimpleFormatter formatter = new SimpleFormatter();
+                fh.setFormatter(formatter);
+
+                conn = DatabaseController.getConnection();          //database connection
+
+                int productStock = products[index].getStock();      //
+                if (productStock < 1) {
+                    errorLabel.setText("The product you want to buy has run out.");
+                } else {
+                    int P_id = products[index].getId();
+                    int U_id = Customer.getUserInstance().getId();
+                    Customer.getUserInstance().editCart(P_id,U_id,Integer.valueOf(QuantityTextField.getText()));
+
+                    logger.log(Level.INFO,
+                            "User " + Customer.getUserInstance().getName() +
+                                    " with id " + Customer.getUserInstance().getId() +
+                                    " bought a product");
+
+                    nameTextField.setText("");
+                    priceTextField.setText("");
+                    stockTextField.setText("");
+
+                    loadProducts();                     //load products again (refresh)
+
+                }
+
+            } catch (SQLException e) {
+                logger.log(Level.SEVERE, e.getMessage());
+                errorLabel.setText("Purchase Product Database failure.");
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+                errorLabel.setText("Something went wrong.");
+            } finally {
+                DbUtils.closeQuietly(rs);
+                DbUtils.closeQuietly(ps);
+                DbUtils.closeQuietly(conn);
+                fh.close();
+            }
+        }
+    }
+
+
+    private void Remove_cart()
+    {
+        errorLabel.setText("");
+        int index = productListView.getSelectionModel().getSelectedIndex();  //get index of the pressed item
+        if (index == -1) {
+            errorLabel.setText("Select a product first.");
+        } else {
+            try {
+                fh = new FileHandler("logfile.log", true);
+                logger.addHandler(fh);
+                SimpleFormatter formatter = new SimpleFormatter();
+                fh.setFormatter(formatter);
+
+                conn = DatabaseController.getConnection();          //database connection
+
+                int productStock = products[index].getStock();      //
+                if (productStock < 1) {
+                    errorLabel.setText("The product you want to buy has run out.");
+                } else {
+                    int P_id = products[index].getId();
+                    int U_id = Customer.getUserInstance().getId();
+                    Customer.getUserInstance().remove_from_cart(P_id,U_id);
+
+                    logger.log(Level.INFO,
+                            "User " + Customer.getUserInstance().getName() +
+                                    " with id " + Customer.getUserInstance().getId() +
+                                    " bought a product");
+
+                    nameTextField.setText("");
+                    priceTextField.setText("");
+                    stockTextField.setText("");
+
+                    loadProducts();                     //load products again (refresh)
+
+                }
+
+            } catch (SQLException e) {
+                logger.log(Level.SEVERE, e.getMessage());
+                errorLabel.setText("Purchase Product Database failure.");
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+                errorLabel.setText("Something went wrong.");
+            } finally {
+                DbUtils.closeQuietly(rs);
+                DbUtils.closeQuietly(ps);
+                DbUtils.closeQuietly(conn);
+                fh.close();
+            }
+        }
     }
 
     @FXML

@@ -83,18 +83,31 @@ public class Customer {
         db.Close_Connection();
 
     }
-    public void editPurchase(GroceryProduct Item){
+    public void editCart(int P_ID,int U_Id,int Quantity_Changed){
         // Edit Products Inside the Cart Code
+        db.ConnectDB();
+
+        db.Update_Cart(P_ID,U_Id,Quantity_Changed);
+
+        db.Close_Connection();
     }
 
-    public void Add_to_cart()
+    public void Add_to_cart(int P_ID,int U_Id,int Quantity_Selected)
     {
+        db.ConnectDB();
 
+        db.add_Cart(P_ID,U_Id,Quantity_Selected);
+
+        db.Close_Connection();
     }
 
-    public void remove_from_cart()
+    public void remove_from_cart(int U_ID, int P_ID)
     {
+        db.ConnectDB();
 
+        db.Remove_from_Cart(U_ID,P_ID);
+
+        db.Close_Connection();
     }
 
 
