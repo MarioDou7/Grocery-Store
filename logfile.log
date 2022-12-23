@@ -1,0 +1,86 @@
+Dec 23, 2022 9:03:17 AM supermarket.Controllers.ProductController purchase
+SEVERE: Unknown column 'user_id' in 'field list'
+Dec 23, 2022 9:03:22 AM supermarket.Controllers.ProductController purchase
+SEVERE: Unknown column 'user_id' in 'field list'
+Dec 23, 2022 9:17:51 AM supermarket.Controllers.ProductController purchase
+SEVERE: Unknown column 'Id' in 'where clause'
+Dec 23, 2022 9:20:35 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:20:38 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:20:40 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:20:41 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:20:43 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:21:02 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:21:04 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:21:05 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:21:08 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:38:44 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:38:47 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:39:07 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 9:39:09 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 11:24:46 AM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 11:29:03 AM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 23, 2022 11:30:06 AM supermarket.Controllers.TransactionController delete
+INFO: A transaction was deleted.
+Dec 23, 2022 11:43:40 AM supermarket.Controllers.AdminController delete
+SEVERE: Cannot delete or update a parent row: a foreign key constraint fails (`grocery_store`.`products`, CONSTRAINT `products_ibfk_2` FOREIGN KEY (`Owner_Id`) REFERENCES `shopowners` (`Id`))
+Dec 23, 2022 11:44:13 AM supermarket.Controllers.AdminController newOwner
+INFO: A New Owner was added.
+Dec 23, 2022 11:44:19 AM supermarket.Controllers.AdminController save
+SEVERE: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Id = 4' at line 1
+Dec 23, 2022 11:44:22 AM supermarket.Controllers.AdminController newOwner
+INFO: A New Owner was added.
+Dec 23, 2022 11:44:36 AM supermarket.Controllers.AdminController save
+SEVERE: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Id = 4' at line 1
+Dec 23, 2022 11:45:17 AM supermarket.Controllers.AdminController delete
+INFO: A user was deleted.
+Dec 23, 2022 11:45:19 AM supermarket.Controllers.AdminController delete
+INFO: A user was deleted.
+Dec 23, 2022 11:45:20 AM supermarket.Controllers.AdminController delete
+SEVERE: Cannot delete or update a parent row: a foreign key constraint fails (`grocery_store`.`products`, CONSTRAINT `products_ibfk_2` FOREIGN KEY (`Owner_Id`) REFERENCES `shopowners` (`Id`))
+Dec 23, 2022 11:47:31 AM supermarket.Controllers.AdminController newOwner
+INFO: A New Owner was added.
+Dec 23, 2022 3:40:27 PM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 3:40:32 PM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 3:40:33 PM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 3:45:29 PM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 23, 2022 4:58:47 PM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 4:58:51 PM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 5:10:56 PM supermarket.Controllers.ProductController purchase
+INFO: User Peter with id 3 bought a product
+Dec 23, 2022 11:54:07 PM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 23, 2022 11:55:04 PM supermarket.Controllers.ProductController delete
+SEVERE: Unknown column 'Id' in 'where clause'
+Dec 23, 2022 11:59:20 PM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 23, 2022 11:59:40 PM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 24, 2022 12:00:27 AM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 24, 2022 12:01:49 AM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 24, 2022 12:02:06 AM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
+Dec 24, 2022 12:35:34 AM supermarket.Controllers.ProductController newProduct
+INFO: A product was added.
