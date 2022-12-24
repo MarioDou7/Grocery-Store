@@ -1,6 +1,6 @@
 package supermarket.Models;
 
-public class Product {
+public class Product implements CurrencyEGP{
     private int id;
     private String name;
     private float price;

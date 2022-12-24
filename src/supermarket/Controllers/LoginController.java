@@ -22,11 +22,12 @@ public class LoginController {
         int id = -1;
         String username = usernameField.getText();
         String password = passwordField.getText();
+        String Address = null;
         try {
             conn = DatabaseController.getConnection();
 
             String validateUser =
-                    "SELECT Id, Username " +
+                    "SELECT Id, Username,Country " +
                     "FROM Users " +
                     "WHERE Username = ? AND Password = ?" +
                     "LIMIT 1";
@@ -38,6 +39,7 @@ public class LoginController {
 
             while (rs.next()) {
                 id = rs.getInt("Id");
+                Address = rs.getString("Country");
             }
         } catch (SQLException e) {
             if (e.getSQLState().equals("08004")) {
@@ -61,6 +63,7 @@ public class LoginController {
                 new Customer(id, username).setUserInstance();
                 ScreenController.goToProducts(event);
             }
+            Customer.getUserInstance().setAddress(Address);
         } else {
             errorLabel.setText("Wrong username or password.");
         }

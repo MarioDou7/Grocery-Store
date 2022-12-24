@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apache.commons.dbutils.DbUtils;
+import supermarket.Models.CurrencyConvertor;
+import supermarket.Models.CurrencyConvertorImp;
 import supermarket.Models.Product;
 import supermarket.Models.Customer;
 
@@ -118,9 +120,15 @@ public class ProductController {
             }
 
             ObservableList<String> productItems = FXCollections.observableArrayList();
+            CurrencyConvertor converterTODollar;
+            String price_displayed;
 
             for (int j = 0; j < i; j++) {
-                productItems.add(products[j].getName() + " - " + products[j].getPrice() + "€ - " + products[j].getStock());
+                if(!Customer.getUserInstance().getAddress().equalsIgnoreCase("Egypt"))
+                    price_displayed = String.valueOf(new CurrencyConvertorImp(products[j]).getPrice()) + " $ - ";
+                else
+                    price_displayed = String.valueOf(products[j].getPrice())+ " EGP - ";
+                productItems.add(products[j].getName() + " - " + price_displayed + "" + products[j].getStock());
             }
 
             productListView.setItems(productItems);
